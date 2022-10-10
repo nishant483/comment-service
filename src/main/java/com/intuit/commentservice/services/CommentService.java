@@ -56,8 +56,8 @@ public class CommentService {
 
     }
 
-    public List<Response> findComments(Long postId,Long parent_comment_id,int depth){
-            Pageable topTwenty = PageRequest.of(0, 20);
+    public List<Response> findComments(Long postId,Long parent_comment_id,int depth,int start,int limit){
+            Pageable topTwenty = PageRequest.of(start, limit);
             List<Comment> comments = commentsRepoInterface.findCommentsByTimestamp(postId,parent_comment_id,depth,topTwenty);
 
             HashMap<Long,Response> commentResponseMap = new HashMap<>();

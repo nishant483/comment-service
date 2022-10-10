@@ -39,7 +39,7 @@ class CommentServiceTest {
 
         String insertedComment = "base_level_test_comment";
         commentService.addCommentToPost(post.get().getId(), user.getId(),insertedComment);
-        List<Response> responseList = commentService.findComments(post.get().getId(), 0L,1);
+        List<Response> responseList = commentService.findComments(post.get().getId(), 0L,1,1,20);
         boolean isCommentPresent = false;
 
         for(Response response:responseList){
@@ -80,7 +80,7 @@ class CommentServiceTest {
         Optional<Post> post = postService.loadPost(2L);
         assert post.isPresent();
 
-        List<Response> responseList = commentService.findComments(post.get().getId(), 0L,2);
+        List<Response> responseList = commentService.findComments(post.get().getId(), 0L,2,1,20);
         assert responseList.size()>1;
 
     }

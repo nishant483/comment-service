@@ -26,8 +26,8 @@ public class CommentController {
 
     @GetMapping(value = "/getComments", produces = "application/json")
     public @ResponseBody List<Response> getComments(@RequestParam("depth") int depth
-            , @RequestParam("parent_comment_id") @NonNull Long parent_comment_id, @RequestParam("postId") @NonNull Long postId) {
-        return commentService.findComments(postId,parent_comment_id,depth);
+            , @RequestParam("parent_comment_id") @NonNull Long parent_comment_id, @RequestParam("postId") @NonNull Long postId, @RequestParam("start") @NonNull int start, @RequestParam("limit") @NonNull int limit) {
+        return commentService.findComments(postId,parent_comment_id,depth,start,limit);
     }
 
     @GetMapping(value = "/addCommentToReply", produces = "application/json")
